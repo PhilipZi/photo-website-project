@@ -10,21 +10,21 @@ const thumbsContainer = {
 };
 
 const thumb = {
-	display: 'inline-flex',
+	display: 'flex',
 	borderRadius: 2,
 	border: '1px solid #eaeaea',
 	marginBottom: 8,
 	marginRight: 8,
-	width: 100,
-	height: 100,
+	width: 'auto',
+	height: 300,
 	padding: 4,
 	boxSizing: 'border-box',
+	margin: '40px 0 0 0',
 };
 
 const thumbInner = {
 	display: 'flex',
-	minWidth: 0,
-	overflow: 'hidden',
+	flexDirection: 'column',
 };
 
 const img = {
@@ -49,7 +49,7 @@ export default function DragNDrop() {
 			);
 		},
 	});
-
+	console.log(useDropzone);
 	const thumbs = files.map(file => (
 		<div style={thumb} key={file.name}>
 			<div style={thumbInner}>
@@ -61,6 +61,7 @@ export default function DragNDrop() {
 						URL.revokeObjectURL(file.preview);
 					}}
 				/>
+				<p>{file.name}</p>
 			</div>
 		</div>
 	));
@@ -71,10 +72,11 @@ export default function DragNDrop() {
 	}, [files]);
 
 	return (
-		<section className="container">
-			<div {...getRootProps({className: 'dropzone'})}>
+		<section>
+			<div {...getRootProps()}>
 				<input {...getInputProps()} />
 				<p>Drag n drop some files here, or click to select files</p>
+				<input type="text" />
 			</div>
 			<aside style={thumbsContainer}>{thumbs}</aside>
 		</section>
