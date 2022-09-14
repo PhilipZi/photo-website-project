@@ -1,5 +1,10 @@
+import DragNDrop from '../components/DragNDrop';
 import Layout from '../components/Layout';
 
 export default function HomePage() {
-	return <Layout></Layout>;
+	return (
+		<Layout>
+			<DragNDrop></DragNDrop>
+		</Layout>
+	);
 }
