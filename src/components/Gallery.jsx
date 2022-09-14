@@ -6,6 +6,8 @@ import lgZoom from 'lightgallery/plugins/zoom';
 import LightGallery from 'lightgallery/react';
 import {useState, useRef, useCallback, useEffect} from 'react';
 
+import StyledImageGallery from './StyledImageGallery';
+
 export default function Gallery() {
 	const lightGallery = useRef(null);
 	const [items, setItems] = useState([
@@ -51,7 +53,7 @@ export default function Gallery() {
 		return items.map(item => {
 			return (
 				<div key={item.id} data-lg-size={item.size} data-src={item.src}>
-					<img src={item.thumb} />
+					<StyledImageGallery src={item.thumb} />
 				</div>
 			);
 		});
